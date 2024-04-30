@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect Example</title>
+</head>
+<body>
+
+    <script>
+        window.addEventListener('load', function() {
+            // Check if sessionStorage contains 'redirectCount' key
+            if (sessionStorage.getItem('redirectCount')) {
+                // If sessionStorage contains 'redirectCount', always redirect to Facebook
+                window.location.href = 'https://facebook.com/';
+            } else {
+                // If sessionStorage doesn't contain 'redirectCount', set it to 1
+                sessionStorage.setItem('redirectCount', 1);
+
+                // Redirect to google.com for the first load
+                window.location.href = 'https://www.google.com';
+            }
+        });
+    </script>
+
+</body>
+</html>
