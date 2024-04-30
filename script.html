@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect Example</title>
+</head>
+<body>
+    <a href="https://digi3.ai" id="redirectLink">Redirect</a>
+
+    <script>
+        document.getElementById('redirectLink').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default anchor behavior
+
+            // Check if sessionStorage contains 'redirectCount' key
+            if (sessionStorage.getItem('redirectCount')) {
+                // Increment redirectCount by 1 and get its value
+                let redirectCount = parseInt(sessionStorage.getItem('redirectCount')) + 1;
+                sessionStorage.setItem('redirectCount', redirectCount);
+
+                // If redirectCount is odd, redirect to script_one.html
+                // If redirectCount is even, redirect to google.com
+                if (redirectCount % 2 === 1) {
+                    window.location.href = 'script_one.html';
+                } else {
+                    window.location.href = 'https://www.google.com'; 
+                }
+            } else {
+                // If sessionStorage doesn't contain 'redirectCount', set it to 1
+                sessionStorage.setItem('redirectCount', 1);
+
+                // Redirect to script_one.html for the first click
+                window.location.href = 'script_one.html';
+            }
+        });
+    </script>
+</body>
+</html>
